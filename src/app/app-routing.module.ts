@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'add-associado',
     loadChildren: () => import('./paginas/associado/add-associado/add-associado.module').then( m => m.AddAssociadoPageModule)
+  },
+  {
+    path: 'sel-equipamento',
+    loadChildren: () => import('./paginas/equipamento/sel-equipamento/sel-equipamento.module').then( m => m.SelEquipamentoPageModule)
   }
 ];
 
