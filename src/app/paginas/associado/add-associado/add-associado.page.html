@@ -8,9 +8,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add-associado</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!--
+    nome, cpf, dataNascimento, telefone, email, endereço
+  -->
+  <form [formGroup]="associadoForm" (ngSubmit)="submit()">
+    <ion-item lines="none">
+      <ion-label position="floating">Nome:</ion-label>
+      <ion-input formControlName="nome" type="text" ></ion-input>
+      <small *ngIf="associadoForm.get('nome')?.errors">Informe o nome de 5 a 50 caracteres</small>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">CPF:</ion-label>
+      <ion-input type="text" placeholder="CPF"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Data de Nascimento:</ion-label>
+      <ion-input type="text" placeholder="data de nascimento"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Telefone:</ion-label>
+      <ion-input type="tel" placeholder="telefone"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">E-mail:</ion-label>
+      <ion-input type="email" placeholder="e-mail"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Endereço:</ion-label>
+      <ion-input type="text" placeholder="endereço"></ion-input>
+    </ion-item>
+
+    <ion-button shape="round" expand="block" type="submit">Adicionar</ion-button>
+
+  </form>
 </ion-content>
