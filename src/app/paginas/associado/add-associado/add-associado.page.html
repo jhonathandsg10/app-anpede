@@ -11,34 +11,71 @@
   <!--
     nome, cpf, dataNascimento, telefone, email, endereço
   -->
-  <form [formGroup]="associadoForm" (ngSubmit)="submit()">
+  <form #form="ngForm" [formGroup]="associadoForm" (ngSubmit)="submit()">
+
+    <!-- Validação pelo TypeScript -->
+    <ion-list class="errors-summary" *ngIf="hasErrors">
+      <ion-label class="errors-summary" *ngFor="let error of errorsMessage" >
+        {{error}}<br>
+      </ion-label>
+    </ion-list>
+
+
     <ion-item lines="none">
-      <ion-label position="floating">Nome:</ion-label>
-      <ion-input formControlName="nome" type="text" ></ion-input>
-      <small *ngIf="associadoForm.get('nome')?.errors">Informe o nome de 5 a 50 caracteres</small>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label position="floating">CPF:</ion-label>
-      <ion-input type="text" placeholder="CPF"></ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label position="floating">Data de Nascimento:</ion-label>
-      <ion-input type="text" placeholder="data de nascimento"></ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label position="floating">Telefone:</ion-label>
-      <ion-input type="tel" placeholder="telefone"></ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label position="floating">E-mail:</ion-label>
-      <ion-input type="email" placeholder="e-mail"></ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label position="floating">Endereço:</ion-label>
-      <ion-input type="text" placeholder="endereço"></ion-input>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome" type="text" 
+                 placeholder="nome"
+                 [class.invalid]="!associadoForm.controls['nome'].valid &&
+                 associadoForm.controls['nome'].touched"></ion-input>
+
+      <small class="error-message" 
+            *ngIf="associadoForm.get('nome')?.errors && form.submitted">
+        Informe o nome (5 a 50 caracteres)
+      </small>
     </ion-item>
 
-    <ion-button shape="round" expand="block" type="submit">Adicionar</ion-button>
+    <ion-item lines="none">
+      <ion-label position="floating">CPF</ion-label>
+      <ion-input formControlName="cpf" type="text" placeholder="CPF"
+                  [class.invalid]="!associadoForm.controls['cpf'].valid &&
+                 associadoForm.controls['cpf'].touched"></ion-input>
+      <small class="error-message" *ngIf="associadoForm.get('cpf')?.errors && form.submitted">
+        Informe o CPF
+      </small>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Data de Nascimento</ion-label>
+      <ion-input formControlName="nascimento" type="text" placeholder="Data de Nascimento"></ion-input>
+      <small class="error-message" *ngIf="associadoForm.get('nascimento')?.errors && form.submitted">
+        Informe uma data de nascimento
+      </small>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input formControlName="telefone" type="tel" placeholder="Telefone"></ion-input>
+      <small class="error-message" *ngIf="associadoForm.get('telefone')?.errors && form.submitted">
+        Informe o telefone
+      </small>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input formControlName="email" type="email" placeholder="E-mail"></ion-input>
+      <small class="error-message" *ngIf="associadoForm.get('email')?.errors && form.submitted">
+        Informe um email válido
+      </small>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Endereço</ion-label>
+      <ion-input formControlName="endereco" type="text" placeholder="Endereço"></ion-input>
+      <small class="error-message" *ngIf="associadoForm.get('endereco')?.errors && form.submitted">
+        Informe o endereço
+      </small>
+    </ion-item>
 
+    <!--[disabled]="!associadoForm.valid"-->
+    <ion-button shape="round" expand="block" 
+      type="submit" >
+      Adicionar
+    </ion-button>
   </form>
 </ion-content>

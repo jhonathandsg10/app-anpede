@@ -1,4 +1,5 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { EquipamentoDTO } from 'src/app/models/EquipamentoDTO';
 import { EquipamentoService } from 'src/app/services/domain/equipamento.service';
 
@@ -12,7 +13,9 @@ export class SelEquipamentoPage implements OnInit {
   equipamentos!: EquipamentoDTO[];
 
 
-  constructor(public equipamentoservice: EquipamentoService) { }
+  constructor(public equipamentoservice: EquipamentoService,
+        private navController: NavController
+    ) { }
   ionViewDidEnter(){
     this.equipamentoservice.findAll().subscribe(Response => { 
       this.equipamentos = Response;
@@ -21,6 +24,9 @@ export class SelEquipamentoPage implements OnInit {
       console.log(error);
     }
     );
+  }
+  addEditEquipamento(){
+    this.navController.navigateForward('add-edit-equipamento');
   }
   ngOnInit() {
   }

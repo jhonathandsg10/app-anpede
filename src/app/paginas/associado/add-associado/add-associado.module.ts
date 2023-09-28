@@ -8,6 +8,7 @@ import { AddAssociadoPageRoutingModule } from './add-associado-routing.module';
 
 import { AddAssociadoPage } from './add-associado.page';
 
+
 @NgModule({
   imports: [
     CommonModule,

@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Adicionar Equipamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="equipamentoForm"(ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position = "floating">Foto</ion-label>
+      <ion-input formControlName="foto" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position = "floating">Nome</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position = "floating">Descrição</ion-label>
+      <ion-input formControlName="descricao" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position = "floating">Marca</ion-label>
+      <ion-input formControlName="marca" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position = "floating">Categoria</ion-label>
+      <ion-input formControlName="categoria" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position = "floating">valor</ion-label>
+      <ion-input formControlName="Valor" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position = "floating">Quantidade</ion-label>
+      <ion-input formControlName="quantidade" type="text"></ion-input>
+    </ion-item>
+    <ion-button shape="round" expand="block" padding type="submit">
+      Cadastrar
+    </ion-button>
+  </form>
+</ion-content>
