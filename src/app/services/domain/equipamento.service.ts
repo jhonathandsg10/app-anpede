@@ -8,16 +8,24 @@ import { EquipamentoDTO } from "src/app/models/EquipamentoDTO";
 @Injectable()
 export class EquipamentoService {
 
-    constructor(public http: HttpClient){
+  constructor(public http: HttpClient) {
 
-    }
+  }
 
-    findAll(): Observable <EquipamentoDTO[]>{
-        return this.http.get<EquipamentoDTO[]>(`${API_CONFIG.baseUrl}/equipamentos`);
+  findAll(): Observable<EquipamentoDTO[]> {
+    return this.http.get<EquipamentoDTO[]>(`${API_CONFIG.baseUrl}/equipamentos`);
+  }
 
-    }
-    insertView(equipamento:EquipamentoDTO){
-        return this.http.post(`${API_CONFIG.baseUrl}/equipamentos`, equipamento,{observe:'response',
-    responseType:'text'});
-    }
+  findById(id: number): Observable<EquipamentoDTO> {
+    return this.http.get<EquipamentoDTO>(
+      `${API_CONFIG.baseUrl}/equipamentos/${id}`);
+  }
+
+  insert(equipamento: EquipamentoDTO) {
+    return this.http.post(`${API_CONFIG.baseUrl}/equipamentos`,
+      equipamento, {
+      observe: 'response',
+      responseType: 'text'
+    });
+  }
 }

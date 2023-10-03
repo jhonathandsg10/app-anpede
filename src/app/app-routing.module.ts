@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/equipamento/sel-equipamento/sel-equipamento.module').then( m => m.SelEquipamentoPageModule)
   },
   {
-    path: 'add-edit-equipamento',
+    path: 'add-edit-equipamento/:id',
     loadChildren: () => import('./paginas/equipamento/add-edit-equipamento/add-edit-equipamento.module').then( m => m.AddEditEquipamentoPageModule)
   }
 ];

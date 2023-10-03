@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddEditEquipamentoPage } from './add-edit-equipamento.page';
 
 describe('AddEditEquipamentoPage', () => {

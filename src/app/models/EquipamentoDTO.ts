@@ -1,4 +1,5 @@
 export interface EquipamentoDTO {
+    categoria: any;
     id: number;
     nome: string;
     descricao: string;
